@@ -1,1 +1,1 @@
-# compare hashes of files to find dupes
+# simply computes hashes of files (NOT compare them)
