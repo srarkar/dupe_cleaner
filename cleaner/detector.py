@@ -1,0 +1,1 @@
+# groups file by hash values (by calling on hasher.py) to determine which files need to be deleted. 
