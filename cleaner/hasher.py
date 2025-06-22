@@ -34,9 +34,15 @@ def compute_hash(path):
         return None
     
 def validate_hash(path, expected_hash):
+    if not path or not expected_hash:
+        return False
     return compute_hash(path) == expected_hash
 
 def compare_hashes(file1, file2):
     file1_hash = compute_hash(file1)
     file2_hash = compute_hash(file2)
+
+    if not file1_hash or not file2_hash:
+        return False
+    
     return file1_hash == file2_hash
