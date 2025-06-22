@@ -28,3 +28,6 @@ if __name__ == "__main__":
   # testing functions from cleaner/
   print("Report:")
   reporter.print_report(32, ["file1", "file2"])
+
+  print("Hashing: ")
+  print(hasher.compute_hash("/Users/ricksarkar/Sum25/Projects/dupe_cleaner/main.py"))
