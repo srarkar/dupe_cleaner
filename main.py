@@ -7,6 +7,7 @@
 
 import sys
 import os
+from pathlib import Path
 from cleaner import scanner, hasher, reporter, detector, metadata
 
 ### sys testing
@@ -35,10 +36,13 @@ if __name__ == "__main__":
                 path = os.getcwd()
             else:
                 sys.exit(1)
+    path = Path(path)
     print(path)
 
     ### use scanner to get a list of all files in provided path, using recursive descent
-    # file_lst = scanner.scan_directory(path)
+    file_lst = scanner.scan_directory(path)
+    for file in file_lst:
+        print(file.name)
 
     ### call detector on this list which will hash all of them and group them by files with the same hash
 

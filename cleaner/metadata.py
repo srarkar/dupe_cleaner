@@ -8,10 +8,10 @@ class FileMetadata:
     path: Path
     size: int
     timestamp: float
-    
-@property
-def name(self):
-    return self.path.name
+
+    @property
+    def name(self):
+        return self.path.name
 
 # used as a constructor to return a FileMetadata object
 def get_file_metadata(path: Path):
@@ -19,7 +19,7 @@ def get_file_metadata(path: Path):
     return FileMetadata(
         path=path,
         size = stats.st_size,
-        mtime = stats.st_mtime
+        timestamp = stats.st_mtime
     )
 
 def is_hidden(path: Path):
@@ -30,5 +30,8 @@ def is_hidden(path: Path):
         ## Use ctypes.windll.kernel32.GetFileAttributesW(path) to get attributes
         # Check if the 0x2 (hidden) bit is set
         return False
+# prevent from recursing into hidden directories like .git
+def is_effectively_hidden(path: Path):
+    return any(part.startswith(".") for part in path.parts)
 
 path = Path("/Users/ricksarkar/Sum25/Projects/dupe_cleaner/tests/.main.py")

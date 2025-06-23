@@ -1,4 +1,3 @@
-
 file_path = "new_file.txt"
 try:
     with open(file_path, 'x') as file:
