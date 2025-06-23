@@ -7,9 +7,14 @@ import os
 from cleaner import metadata
 from pathlib import Path
 
-def scan_directory(path: Path):
+def scan_directory(path: Path, recursive=True):
     file_lst = []
-    for file_path in path.rglob("*"):
+    if (recursive):
+        iterator = path.rglob("*")
+    else:
+         iterator = path.iterdir()
+
+    for file_path in iterator:
         if file_path.is_file() and not metadata.is_effectively_hidden(file_path):
                 file_lst.append(metadata.get_file_metadata(file_path))
     return file_lst

@@ -40,6 +40,7 @@ if __name__ == "__main__":
     print(path)
 
     ### use scanner to get a list of all files in provided path, using recursive descent
+    ## TODO: check for if the user adds a flag for recursive or not (such as -l for "local"?)
     file_lst = scanner.scan_directory(path)
     for file in file_lst:
         print(file.name)

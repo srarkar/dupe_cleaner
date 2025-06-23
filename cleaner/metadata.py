@@ -26,7 +26,7 @@ def is_hidden(path: Path):
     if os.name == "posix": # macOS/Linux
         return path.name.startswith(".")
     elif os.name == "nt":  # Windows
-        ## NOT IMPLEMENTED YET 
+        ## TODO -- NOT IMPLEMENTED YET 
         ## Use ctypes.windll.kernel32.GetFileAttributesW(path) to get attributes
         # Check if the 0x2 (hidden) bit is set
         return False
