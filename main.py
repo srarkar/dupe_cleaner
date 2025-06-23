@@ -6,7 +6,8 @@
 #  - call on reporter.py when everything is done; display the storage that was cleared or archived, and possibly list file names
 
 import sys
-from cleaner import scanner, hasher, reporter
+import os
+from cleaner import scanner, hasher, reporter, detector, metadata
 
 ### sys testing
 def parse_args(argv):
@@ -19,7 +20,20 @@ def parse_args(argv):
     return args_lst, argc
 
 if __name__ == "__main__":
+    args_lst, argc = parse_args(sys.argv)
 
-  parse_args(sys.argv)
+    # use current directory if not provided
+    if args_lst == []:
+        path = os.getcwd()
+    else:
+        path = args_lst[0]
+    print(path)
 
-  # testing functions
+    # use scanner to get a list of all files in provided path, using recursive descent
+    # file_lst = scanner.get_all_files(path)
+    # call detector on this list which will hash all of them and group them by files with the same hash
+
+    # then, call actions to delete or archive files that are duplicates. When choosing which one to delete, delete the older one based on mtime
+
+
+

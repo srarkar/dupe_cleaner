@@ -8,6 +8,10 @@ class FileMetadata:
     path: Path
     size: int
     timestamp: float
+    
+@property
+def name(self):
+    return self.path.name
 
 # used as a constructor to return a FileMetadata object
 def get_file_metadata(path: Path):
@@ -27,8 +31,4 @@ def is_hidden(path: Path):
         # Check if the 0x2 (hidden) bit is set
         return False
 
-
-    
-
 path = Path("/Users/ricksarkar/Sum25/Projects/dupe_cleaner/tests/.main.py")
-print(is_hidden(path))
