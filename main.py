@@ -24,16 +24,25 @@ if __name__ == "__main__":
 
     # use current directory if not provided
     if args_lst == []:
+        print("Path to directory not provided. Using current directory...")
         path = os.getcwd()
     else:
         path = args_lst[0]
+        if  not os.path.isdir(path):
+            print(f"{path} is not a directory.")
+            query = input("Use current director instead? y/n\n")
+            if query == "y" or query == "yes":
+                path = os.getcwd()
+            else:
+                sys.exit(1)
     print(path)
 
-    # use scanner to get a list of all files in provided path, using recursive descent
-    # file_lst = scanner.get_all_files(path)
-    # call detector on this list which will hash all of them and group them by files with the same hash
+    ### use scanner to get a list of all files in provided path, using recursive descent
+    # file_lst = scanner.scan_directory(path)
 
-    # then, call actions to delete or archive files that are duplicates. When choosing which one to delete, delete the older one based on mtime
+    ### call detector on this list which will hash all of them and group them by files with the same hash
+
+    ### then, call actions to delete or archive files that are duplicates. When choosing which one to delete, delete the older one based on mtime
 
 
 

@@ -5,6 +5,6 @@
 
 import os
 
-def get_all_files(path):
-    # returns a List of FileMetadata objects -- one for each file
-    pass
+def scan_directory(path):
+    file_lst = []
+    
