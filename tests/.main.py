@@ -11,12 +11,15 @@ from cleaner import scanner, hasher, reporter
 ### sys testing
 def parse_args(argv):
     args_lst = []
-    argc = 0
+    arg_count = 0
     for arg in argv:
         if (arg != "main.py"):
             args_lst.append(arg)
-            argc += 1
-    return args_lst, argc
+            arg_count += 1
+    print("\n")
+    print(args_lst)
+    print("num args: " + str(arg_count))
+    print("\n")
 
 if __name__ == "__main__":
 

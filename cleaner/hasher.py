@@ -32,7 +32,8 @@ def compute_hash(path):
     except Exception as e:
         print(f"Unknown error when accessing {path}: {e}")
         return None
-    
+
+# this can be used by actions.py or reporter.py to double check the hash after the file has been moved 
 def validate_hash(path, expected_hash):
     if not path or not expected_hash:
         return False
