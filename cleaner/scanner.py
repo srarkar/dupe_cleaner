@@ -14,6 +14,7 @@ def scan_directory(path: Path, recursive=True):
     else:
          iterator = path.iterdir()
 
+    # TODO: add flag for looking for hidden files or not ("-h")
     for file_path in iterator:
         if file_path.is_file() and not metadata.is_effectively_hidden(file_path):
                 file_lst.append(metadata.get_file_metadata(file_path))

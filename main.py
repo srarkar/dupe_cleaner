@@ -32,7 +32,7 @@ if __name__ == "__main__":
         if  not os.path.isdir(path):
             print(f"{path} is not a directory.")
             query = input("Use current director instead? y/n\n")
-            if query == "y" or query == "yes":
+            if query == "y" or query == "ye" or query == "yes" or query == "yurr":
                 path = os.getcwd()
             else:
                 sys.exit(1)
@@ -41,12 +41,18 @@ if __name__ == "__main__":
 
     ### use scanner to get a list of all files in provided path, using recursive descent
     ## TODO: check for if the user adds a flag for recursive or not (such as -l for "local"?)
-    file_lst = scanner.scan_directory(path)
+    if "-l" in args_lst:
+        recursive = False
+    else:
+        recursive = True
+    file_lst = scanner.scan_directory(path, recursive)
     for file in file_lst:
-        print(file.name)
+        pass
+        #print(file.name)
 
     ### call detector on this list which will hash all of them and group them by files with the same hash
-
+    # dictionary that maps hash to a list of FileMetadata objects
+    print(detector.group_by_hash(file_lst))
     ### then, call actions to delete or archive files that are duplicates. When choosing which one to delete, delete the older one based on mtime
 
 
