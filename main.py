@@ -50,7 +50,9 @@ if __name__ == "__main__":
         pass
         #print(file.name)
 
-    ### call detector on this list which will hash all of them and group them by files with the same hash
+    ### TODO: call detector to group by file size, getting a dictionary whose values are lists containing files of the same size
+    ### TODO: call on detector again on each list, grouping by hash. the end result is all the files that are dupes. 
+    # the size step is optional but should save a lot of time
     # dictionary that maps hash to a list of FileMetadata objects
     print(detector.group_by_hash(file_lst))
     ### then, call actions to delete or archive files that are duplicates. When choosing which one to delete, delete the older one based on mtime
