@@ -43,6 +43,7 @@ if __name__ == "__main__":
     ## TODO: check for if the user adds a flag for recursive or not (such as -l for "local"?)
     if "-l" in args_lst:
         recursive = False
+        args_lst.pop(args_lst.index("-l"))
     else:
         recursive = True
     file_lst = scanner.scan_directory(path, recursive)
@@ -50,11 +51,15 @@ if __name__ == "__main__":
         pass
         #print(file.name)
 
-    ### TODO: call detector to group by file size, getting a dictionary whose values are lists containing files of the same size
-    ### TODO: call on detector again on each list, grouping by hash. the end result is all the files that are dupes. 
-    # the size step is optional but should save a lot of time
-    # dictionary that maps hash to a list of FileMetadata objects
-    print(detector.group_by_hash(file_lst))
+
+    files_by_size = (detector.group_by_size(file_lst))
+    # the size step is optional but should reduce computation
+    files_by_hash = {}
+    for size_group in files_by_size.values():
+        group = detector.group_by_hash(size_group)
+        files_by_hash.update(group)
+    print(files_by_hash)
+
     ### then, call actions to delete or archive files that are duplicates. When choosing which one to delete, delete the older one based on mtime
 
 

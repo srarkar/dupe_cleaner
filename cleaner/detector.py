@@ -36,8 +36,8 @@ def group_by_size(file_lst):
             size_to_file[size].append(file)
         else:
             size_to_file[size] = [file]
-    for hash in list(hash_to_file):
-        if len(hash_to_file[hash]) <= 1:
-            hash_to_file.pop(hash)
-    return hash_to_file
+    for hash in list(size_to_file):
+        if len(size_to_file[hash]) <= 1:
+            size_to_file.pop(hash)
+    return size_to_file
     
