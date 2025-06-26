@@ -62,6 +62,7 @@ if __name__ == "__main__":
 
     ### then, call actions to delete or archive files that are duplicates.
     # When choosing which one to delete, delete the older one based on timestamp field
+    # TODO: make sure calls to delete_dupes contain a single list of files, all of which share the same hash!!!
 
 
 
