@@ -12,6 +12,14 @@ def delete_file(original_file, duplicate_file):
 
 
 # given a list of FileMetadata Objects, all of which are duplicates of each other, find the one with the most recent timestamp/mtime
-# delete the rest of them, calling on delete_file (above)
+# delete the rest, and return a list containing the deleted files for records.py
 def delete_dupes(file_lst):
-    pass
+
+    # Find the file with the most recent modification time
+    most_recent_file = max(file_lst, key=lambda f: f.timestamp)
+    ## now, most_recent_file is the file that was modified most recently. delete everything else
+    # pop it, and delete everything else
+    file_lst.remove(most_recent_file)
+    for file in file_lst:
+        delete_file(most_recent_file, file)
+    return file_lst # return all the files that have been deleted, for bookeeping
