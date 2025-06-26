@@ -60,7 +60,8 @@ if __name__ == "__main__":
         files_by_hash.update(group)
     print(files_by_hash)
 
-    ### then, call actions to delete or archive files that are duplicates. When choosing which one to delete, delete the older one based on mtime
+    ### then, call actions to delete or archive files that are duplicates.
+    # When choosing which one to delete, delete the older one based on timestamp field
 
 
 
