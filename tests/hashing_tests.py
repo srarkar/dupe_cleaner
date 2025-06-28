@@ -1,7 +1,1 @@
-file_path = "new_file.txt"
-try:
-    with open(file_path, 'x') as file:
-        file.write("Testing out hashing")
-    print(f"File '{file_path}' created successfully.")
-except FileExistsError:
-    print(f"File '{file_path}' already exists.")
+/Users/ricksarkar/Sum25/Projects/dupe_cleaner/tests/hashing_tests_copy.py

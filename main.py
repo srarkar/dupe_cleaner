@@ -1,14 +1,12 @@
-# initial commit
 # this is the main file -- reads the user input (directory to scan)
 #  - calls on files in cleaner/ for specific actions (recursive directory scan)
 #  - uses hash values and comparisons (hasher.py + detector.py) to determine if a file is a dupe
 #  - calls on actions.py to delete or archive if dupe is found
 #  - call on reporter.py when everything is done; display the storage that was cleared or archived, and possibly list file names
-
 import sys
 import os
 from pathlib import Path
-from cleaner import scanner, hasher, reporter, detector, metadata
+from cleaner import scanner, hasher, reporter, detector, metadata, actions
 
 ### sys testing
 def parse_args(argv):
@@ -37,7 +35,7 @@ if __name__ == "__main__":
             else:
                 sys.exit(1)
     path = Path(path)
-    print(path)
+    print(f"Path: {path}")
 
     ### use scanner to get a list of all files in provided path, using recursive descent
     ## TODO: check for if the user adds a flag for recursive or not (such as -l for "local"?)
@@ -47,22 +45,24 @@ if __name__ == "__main__":
     else:
         recursive = True
     file_lst = scanner.scan_directory(path, recursive)
-    for file in file_lst:
-        pass
-        #print(file.name)
-
 
     files_by_size = (detector.group_by_size(file_lst))
+
+
     # the size step is optional but should reduce computation
     files_by_hash = {}
     for size_group in files_by_size.values():
         group = detector.group_by_hash(size_group)
         files_by_hash.update(group)
-    print(files_by_hash)
-
+    # files_by_hash has keys that are hash values, with values being a list a FileMetadata objects sharing the hash
     ### then, call actions to delete or archive files that are duplicates.
-    # When choosing which one to delete, delete the older one based on timestamp field
-    # TODO: make sure calls to delete_dupes contain a single list of files, all of which share the same hash!!!
+    # TODO: make sure calls to delete_dupes contain a single list of files, all of which share the same hash
+    deleted_files = []
+    for hash in files_by_hash.keys():
+        deleted_files += actions.delete_dupes(files_by_hash[hash])
+
+        
+        
 
 
 
