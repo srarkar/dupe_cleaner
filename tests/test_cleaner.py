@@ -6,7 +6,7 @@ import os
 from cleaner import metadata
 import shutil
 
-# run with python3 -m unittest discover tests
+# run with python3 -m unittest discover -v tests
 
 class TestDuplicateCleaner(unittest.TestCase):
 
