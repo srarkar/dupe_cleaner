@@ -63,7 +63,7 @@ if __name__ == "__main__":
         deleted_files += group_deleted
         failed_links += flinks
 
-    # TODO: Implement reporter.py
+    reporter.print_report(deleted_files, files_by_hash, failed_links)
 
 
         
