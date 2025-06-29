@@ -23,15 +23,16 @@ def get_file_metadata(path: Path):
     )
 
 def is_hidden(path: Path):
-    if os.name == "posix": # macOS/Linux
-        return path.name.startswith(".")
-    elif os.name == "nt":  # Windows
-        ## TODO -- NOT IMPLEMENTED YET 
-        ## Use ctypes.windll.kernel32.GetFileAttributesW(path) to get attributes
-        # Check if the 0x2 (hidden) bit is set
-        return False
+    if os.path.isdir(path):
+        return hidden_parent(path)
+    else:
+        if os.name == "posix": # macOS/Linux
+            return path.name.startswith(".")
+        elif os.name == "nt":  # Windows
+            ## TODO -- NOT IMPLEMENTED YET 
+            ## Use ctypes.windll.kernel32.GetFileAttributesW(path) to get attributes
+            # Check if the 0x2 (hidden) bit is set
+            return False
 # prevent from recursing into hidden directories like .git
-def is_effectively_hidden(path: Path):
+def hidden_parent(path: Path):
     return any(part.startswith(".") for part in path.parts)
-
-path = Path("/Users/ricksarkar/Sum25/Projects/dupe_cleaner/tests/.main.py")

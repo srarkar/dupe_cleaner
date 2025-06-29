@@ -20,27 +20,38 @@ def parse_args(argv):
 
 def flag_handling(args_lst):
     flag_dictionary = {}
+
+    # local vs recursive descent
     if "-l" in args_lst:
         flag_dictionary["recursive"] = False
         args_lst.remove("-l")
     else:
         flag_dictionary["recursive"] = True
     
+    # dry run -- no actual changes to files
     if "--dry-run" in args_lst:
         flag_dictionary["dry_run"] = True
         args_lst.remove("--dry-run")
     else:
         flag_dictionary["dry_run"] = False
     
+    # print file names in final report
     if "-f" in args_lst:
         flag_dictionary["file_names"] = True
         args_lst.remove("-f")
     else:
         flag_dictionary["file_names"] = False
 
+    # include hidden files
+    if "-h" in args_lst or "-hidden" in args_lst:
+        flag_dictionary["hidden"] = True
+        args_lst = [arg for arg in args_lst if arg not in ("-h", "-hidden")]
+    else:
+        flag_dictionary["hidden"] = False
+
     if args_lst != []:
         print(f"Invalid argument(s): {args_lst}")
-        print("Continuing operations...")
+        print("Ignoring Continuing operations...")
     return flag_dictionary
     
     
@@ -68,7 +79,7 @@ if __name__ == "__main__":
     ## TODO: abstract flag handling into helper
     flags = flag_handling(args_lst)
 
-    file_lst = scanner.scan_directory(path, flags["recursive"])
+    file_lst = scanner.scan_directory(path, flags["recursive"], flags["hidden"])
 
     files_by_size = (detector.group_by_size(file_lst))
 
