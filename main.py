@@ -56,12 +56,16 @@ if __name__ == "__main__":
         files_by_hash.update(group)
     # files_by_hash has keys that are hash values, with values being a list a FileMetadata objects sharing the hash
     ### then, call actions to delete or archive files that are duplicates.
-    # TODO: make sure calls to delete_dupes contain a single list of files, all of which share the same hash
     deleted_files = []
+    failed_links = 0
     for hash in files_by_hash.keys():
-        deleted_files += actions.delete_dupes(files_by_hash[hash])
+        group_deleted, flinks = actions.delete_dupes(files_by_hash[hash])
+        deleted_files += group_deleted
+        failed_links += flinks
 
-        
+    # TODO: Implement reporter.py
+
+
         
 
 
