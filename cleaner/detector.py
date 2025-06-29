@@ -1,7 +1,7 @@
 # groups file by hash values (by calling on hasher.py) to determine which files need to be deleted. 
 
 # use a dictionary, where the key is the hash, and the value is a list of FileMetadata objects
-from cleaner import metadata, hasher
+from cleaner import hasher
 
 
 # returns a dictionary

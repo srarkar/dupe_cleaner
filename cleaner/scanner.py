@@ -3,7 +3,6 @@
 # take metadata from files and use it for quick comparisons 
 # e.g. files of different sizes cannot be dupes
 
-import os
 from cleaner import metadata
 from pathlib import Path
 

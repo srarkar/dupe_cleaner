@@ -6,7 +6,7 @@
 import sys
 import os
 from pathlib import Path
-from cleaner import scanner, hasher, reporter, detector, metadata, actions
+from cleaner import scanner, reporter, detector, metadata, actions
 
 
 def parse_args(argv):
