@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # this is the main file -- reads the user input (directory to scan)
 #  - calls on files in cleaner/ for specific actions (recursive directory scan)
 #  - uses hash values and comparisons (hasher.py + detector.py) to determine if a file is a dupe
@@ -13,7 +14,7 @@ def parse_args(argv):
     args_lst = []
     argc = 0
     for arg in argv:
-        if (arg != "main.py"):
+        if (arg != "main.py" and arg != "/opt/anaconda3/bin/dupecleaner"):
             args_lst.append(arg)
             argc += 1
     return args_lst, argc
@@ -54,9 +55,7 @@ def flag_handling(args_lst):
         print("Ignoring Continuing operations...")
     return flag_dictionary
     
-    
-
-if __name__ == "__main__":
+def main():
     args_lst, argc = parse_args(sys.argv)
 
     # use current directory if not provided
@@ -67,7 +66,7 @@ if __name__ == "__main__":
         path = args_lst[0]
         if not os.path.isdir(path):
             print(f"{path} is not a directory. Ensure path is the first argument")
-            query = input("Use current director instead? y/n\n")
+            query = input("Use current directory instead? y/n\n")
             if query == "y" or query == "ye" or query == "yes" or query == "yurr":
                 path = os.getcwd()
             else:
@@ -100,6 +99,9 @@ if __name__ == "__main__":
         failed_links += flinks
 
     reporter.print_report(deleted_files, files_by_hash, failed_links, flags)
+
+if __name__ == "__main__":
+    main()
 
 
         
