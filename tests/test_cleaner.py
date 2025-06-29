@@ -4,6 +4,7 @@ import subprocess
 from pathlib import Path
 import os
 
+# run with python3 -m unittest discover tests
 class TestDuplicateCleaner(unittest.TestCase):
     def test_multiple_duplicate_groups(self):
         with tempfile.TemporaryDirectory() as tmpdirname:
