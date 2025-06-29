@@ -72,11 +72,12 @@ if __name__ == "__main__":
                 path = os.getcwd()
             else:
                 sys.exit(1)
+        else:
+            args_lst.pop(0)
     path = Path(path)
     print(f"Path: {path}")
 
     ### use scanner to get a list of all files in provided path, using recursive descent
-    ## TODO: abstract flag handling into helper
     flags = flag_handling(args_lst)
 
     file_lst = scanner.scan_directory(path, flags["recursive"], flags["hidden"])
