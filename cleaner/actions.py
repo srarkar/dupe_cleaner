@@ -8,7 +8,9 @@ def delete_file(original_file, duplicate_file, dry_run):
         if not dry_run:
             os.remove(duplicate_file.path)
             os.symlink(src=original_file.path, dst=duplicate_file.path)
-        print(f"Deleting {duplicate_file.path} and linking to {original_file.path}")
+            print(f"Deleting {duplicate_file.path} and linking to {original_file.path}")
+        else:
+            print(f"Would have deleted {duplicate_file.path} and linked to {original_file.path}")
     except Exception as e:
         print(f"Failed to create symlink from {duplicate_file.path} to {original_file.path}: {e}")
         failed_links += 1

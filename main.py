@@ -54,8 +54,8 @@ if __name__ == "__main__":
         path = os.getcwd()
     else:
         path = args_lst[0]
-        if  not os.path.isdir(path):
-            print(f"{path} is not a directory.")
+        if not os.path.isdir(path):
+            print(f"{path} is not a directory. Ensure path is the first argument")
             query = input("Use current director instead? y/n\n")
             if query == "y" or query == "ye" or query == "yes" or query == "yurr":
                 path = os.getcwd()
