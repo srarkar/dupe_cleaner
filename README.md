@@ -39,5 +39,6 @@ There are some tests in place that ascertain expected behavior of the duplicate 
 Feel free to add additional tests if you wish.
 
 ## Notes
-  - Windows functionality regarding hidden file detection is currently untested. Core functionality should not be affected, but it is possible that hidden files that are not meant to be checked will be when the tool is ran on a Windows device.
+  - Windows functionality regarding hidden file detection is currently untested. Core functionality should not be affected, but it is possible that hidden files that are not meant to be checked will be when the tool is ran on a Windows device. <img src="https://github.com/user-attachments/assets/3b7d77b6-6506-4bc8-ad6d-a1915789e00d" width="25" />
+
   - Additionally, file metadata is not preseved upon deletion, even with the symlink creation. After the tool is run and symlinks are created, be careful with moving the remaining file (the survivor of the duplicates), as it may interfere with the symlinks that point to it. 
