@@ -90,9 +90,10 @@ class TestDuplicateCleaner(unittest.TestCase):
             self.assertFalse(metadata.is_hidden(visible_dir))
             self.assertTrue(metadata.is_hidden(hidden_dir))
 
-            # Test files inside directories with is_effectively_hidden()
-            self.assertFalse(metadata.hidden_parent(visible_dir / "file.txt"))
-            self.assertTrue(metadata.hidden_parent(hidden_dir / "file.txt"))
+            # Test files inside directories
+            self.assertFalse(metadata.is_hidden(visible_dir / "file.txt"))
+            self.assertTrue(metadata.is_hidden(hidden_dir / "file.txt"))
+            
     def test_recursive_vs_local_scan(self):
         with tempfile.TemporaryDirectory() as tmpdirname:
             tmpdir = Path(tmpdirname)
