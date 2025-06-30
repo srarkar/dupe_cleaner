@@ -1,5 +1,4 @@
-# Duplicate File Cleaner
-<img src="https://github.com/user-attachments/assets/5cceb6f1-156a-4a8a-afcc-cb1654a33ebb" width="200" />
+# Duplicate File Cleaner <img src="https://github.com/user-attachments/assets/5cceb6f1-156a-4a8a-afcc-cb1654a33ebb" width="100" />
 
 
 
