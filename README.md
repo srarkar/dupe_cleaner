@@ -6,6 +6,7 @@ CLI Tool that finds and removes duplicate files
 in-progress
 
 ## Flags:
+
 These optional flags alter how the tool works, including the print outputs or what files it looks at when searching for duplicates.
   - `-l`: By default, the tool runs recursively, searching all non-hidden subdirectories found in the provided path. Adding `-l` (local) prevents the recursive descent, meaning that the tool will only delete duplicate files found in the provided directory and no subdirectories.
   - `-f`: After the tool finishes running, it outputs a report that includes information on the storage cleared, number of files removed, and more. To also display the exact file names that were deleted, include the `-f` flag
