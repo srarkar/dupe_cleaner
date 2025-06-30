@@ -1,4 +1,7 @@
 # Duplicate File Cleaner
+![image](https://github.com/user-attachments/assets/5cceb6f1-156a-4a8a-afcc-cb1654a33ebb)
+
+
 
 ## Overview
 `CLI` (Command-Line Interface) tool that finds and deletes duplicate files. Duplicates are found by hashing the contents of files following the `SHA256` protocol.
