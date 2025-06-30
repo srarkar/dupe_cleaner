@@ -24,6 +24,7 @@ Then, run ``python3 main.py [PATH] [FLAGS]`` to run the tool.
 #### Requirements:
   - Python 3.6+ installed on your system
   - pip package manager installed
+    
 Clone this repository by running ``git clone https://github.com/srarkar/dupe_cleaner.git``, followed by ``cd dupe_cleaner`` to enter the newly created directory.
 Then, run ``pip install .``
 Now, you can run the ``dupecleaner [PATH] [FLAGS]`` CLI tool from anywhere within your terminal.
