@@ -4,7 +4,7 @@
 
 
 ## Overview
-`CLI` (Command-Line Interface) tool that finds and deletes duplicate files. Duplicates are found by hashing the contents of files following the `SHA256` protocol.
+`CLI` (Command Line Interface) tool that finds and deletes duplicate files. Duplicates are found by hashing the contents of files following the `SHA256` protocol.
 Files are first sorted by file size then by hash, since two files cannot be duplicates if their file sizes differ. 
 
 When duplicate files are found, they are deleted based on which was modified the least recently. Thus, in a group of duplicate files, the one file survivor will be the one modified most recently. 
