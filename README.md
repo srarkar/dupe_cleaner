@@ -35,7 +35,9 @@ Then, run ``pip install .``
 Now, you can run the ``dupecleaner [PATH] [FLAGS]`` CLI tool from anywhere within your terminal.
 
 ### Running test cases:
-There are some tests in place that ascertain expected behavior of the duplicate file cleaner. After cloning the repository with ``git clone https://github.com/srarkar/dupe_cleaner.git``, run ``cd dupe_cleaner`` followed by ``cd tests`` to enter the `tests` subdirectory. From there, run ``python3 -m unittest discover -v tests`` to run the test cases. 
+There are some tests in place that ascertain expected behavior of the duplicate file cleaner. After cloning the repository with ``git clone https://github.com/srarkar/dupe_cleaner.git``, run ``cd dupe_cleaner`` followed by ``cd tests`` to enter the `tests` subdirectory. 
+
+From there, run ``python3 -m unittest discover -v tests`` to run the test cases. 
 Feel free to add additional tests if you wish.
 
 ## Notes
