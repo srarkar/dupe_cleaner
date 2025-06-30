@@ -1,9 +1,13 @@
-# dupe_cleaner
+# Duplicate File Cleaner
 
 ## Overview
-CLI Tool that finds and removes duplicate files
+CLI (Command-Line Interface) tool that finds and deletes duplicate files. Duplicates are found by hashing the contents of files following the SHA256 protocol.
+Files are first sorted by file size then by hash, since two files cannot be duplicates if their file sizes differ. 
 
-in-progress
+When duplicate files are found, they are deleted based on which was modified the least recently. Thus, in a group of duplicate files, the one file survivor will be the one modified most recently. 
+
+Note that when a file is deleted, a symbolic link, also known as a `softlink` or `symlink` is created between the deleted file and the survivor. 
+If something referenced a file that was deleted by the tool, it will be redirected to the survivor automatically. 
 
 ## Flags:
 
@@ -30,3 +34,7 @@ Now, you can run the ``dupecleaner [PATH] [FLAGS]`` CLI tool from anywhere withi
 ### Running test cases:
 There are some tests in place that ascertain expected behavior of the duplicate file cleaner. After cloning the repository with ``git clone https://github.com/srarkar/dupe_cleaner.git``, run ``cd dupe_cleaner`` followed by ``cd tests`` to enter the `tests` subdirectory. From there, run ``python3 -m unittest discover -v tests`` to run the test cases. 
 Feel free to add additional tests if you wish.
+
+## Notes
+Windows functionality regarding hidden file detection is currently untested. Core functionality should not be affected, but it is possible that hidden files that are not meant to be checked will be when the tool is ran on a Windows device.
+Additionally, file metadata is not preseved upon deletion, even with the symlink creation. After the tool is run and symlinks are created, be careful with moving the remaining file (the survivor of the duplicates), as it may interfere with the symlinks that point to it. 
