@@ -48,4 +48,5 @@ Feel free to add additional tests if you wish.
   - Additionally, file metadata is not preseved upon deletion, even with the symlink creation. After the tool is run and symlinks are created, be careful with moving the remaining file (the survivor of the duplicates), as it may interfere with the symlinks that point to it. 
 
 Thank you for checking this out!
-<img width="50" alt="image" src="https://github.com/user-attachments/assets/c85281ce-b308-4b5b-b4aa-18ddc078cfb3" />
+
+<img width="50" alt="image" src="https://github.com/user-attachments/assets/f7318f06-8801-4818-9453-8288f51984bf" />
