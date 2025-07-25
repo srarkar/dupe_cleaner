@@ -27,7 +27,6 @@ def group_by_hash(file_lst):
 # keys: file size in bytes
 # values: a list of FileMetadata objects containing all the files that share a specific size
 # automatically removes keys that only have one value for a specific size, meaning no duplicate exists for it
-# TODO: try to use in conjunction with group_by_hash to only check files that have the same size for being duplicates
 def group_by_size(file_lst):
     size_to_file = {}
     for file in file_lst:

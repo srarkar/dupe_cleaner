@@ -54,6 +54,25 @@ def flag_handling(args_lst):
         print(f"Invalid argument(s): {args_lst}")
         print("Ignoring Continuing operations...")
     return flag_dictionary
+
+def delete_handler(files_by_size, flags):
+    # size grouping step is optional but should reduce computation
+    files_by_hash = {}
+    for size_group in files_by_size.values():
+        group = detector.group_by_hash(size_group)
+        files_by_hash.update(group)
+
+    # files_by_hash has keys that are hash values, with values being a list a FileMetadata objects sharing the hash
+    ### then, call actions to delete or archive files that are duplicates.
+    deleted_files = []
+    failed_links = 0
+    for hash in files_by_hash.keys():
+        group_deleted, flinks = actions.delete_dupes(files_by_hash[hash], flags["dry_run"])
+        deleted_files += group_deleted
+        num_failed_links += flinks
+    
+    return deleted_files, files_by_hash, num_failed_links
+
     
 def main():
     args_lst, argc = parse_args(sys.argv)
@@ -83,22 +102,9 @@ def main():
 
     files_by_size = (detector.group_by_size(file_lst))
 
+    deleted_files, files_by_hash, num_failed_links = delete_handler(files_by_size, flags)
 
-    # the size step is optional but should reduce computation
-    files_by_hash = {}
-    for size_group in files_by_size.values():
-        group = detector.group_by_hash(size_group)
-        files_by_hash.update(group)
-    # files_by_hash has keys that are hash values, with values being a list a FileMetadata objects sharing the hash
-    ### then, call actions to delete or archive files that are duplicates.
-    deleted_files = []
-    failed_links = 0
-    for hash in files_by_hash.keys():
-        group_deleted, flinks = actions.delete_dupes(files_by_hash[hash], flags["dry_run"])
-        deleted_files += group_deleted
-        failed_links += flinks
-
-    reporter.print_report(deleted_files, files_by_hash, failed_links, flags)
+    reporter.print_report(deleted_files, files_by_hash, num_failed_links, flags)
 
 if __name__ == "__main__":
     main()
