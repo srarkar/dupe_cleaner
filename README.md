@@ -44,3 +44,6 @@ Feel free to add additional tests if you wish.
   - Windows functionality regarding hidden file detection is currently untested. Core functionality should not be affected, but it is possible that hidden files that are not meant to be checked will be when the tool is ran on a Windows device. <img src="https://github.com/user-attachments/assets/3b7d77b6-6506-4bc8-ad6d-a1915789e00d" width="25" />
 
   - Additionally, file metadata is not preseved upon deletion, even with the symlink creation. After the tool is run and symlinks are created, be careful with moving the remaining file (the survivor of the duplicates), as it may interfere with the symlinks that point to it. 
+
+Thank you for checking this out!
+<img width="50" alt="image" src="https://github.com/user-attachments/assets/c85281ce-b308-4b5b-b4aa-18ddc078cfb3" />
