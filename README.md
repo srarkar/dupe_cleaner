@@ -4,7 +4,7 @@
 
 
 ## Overview
-`CLI` (Command-Line Interface) tool that finds and deletes duplicate files. Duplicates are found by hashing the contents of files following the `SHA256` protocol.
+`CLI` (Command Line Interface) tool that finds and deletes duplicate files. Duplicates are found by hashing the contents of files following the `SHA256` protocol.
 Files are first sorted by file size then by hash, since two files cannot be duplicates if their file sizes differ. 
 
 When duplicate files are found, they are deleted based on which was modified the least recently. Thus, in a group of duplicate files, the one file survivor will be the one modified most recently. 
@@ -12,11 +12,13 @@ When duplicate files are found, they are deleted based on which was modified the
 Note that when a file is deleted, a `symbolic link`, also known as a `softlink` or `symlink` is created between the deleted file and the survivor. 
 If something referenced a file that was deleted by the tool, it will be redirected to the survivor automatically. 
 
+A report is printed to the console once the tool finishes running, which displays the number of files that were deleted, the amount of storage cleared (in bytes), number of duplicate file groups found, and how many softlinks failed to be created.
+
 ## Flags:
 
 These optional flags alter how the tool works, including the print outputs or what files it looks at when searching for duplicates.
   - `-l`: By default, the tool runs recursively, searching all non-hidden subdirectories found in the provided path. Adding `-l` (local) prevents the recursive descent, meaning that the tool will only delete duplicate files found in the provided directory and no subdirectories.
-  - `-f`: After the tool finishes running, it outputs a report that includes information on the storage cleared, number of files removed, and more. To also display the exact file names that were deleted, include the `-f` flag
+  - `-f`: After the tool finishes running, it outputs a report that includes information on the storage cleared, number of files removed, and more. To also display the names of the files that were deleted, include the `-f` flag.
   - `-h`: By default, the tool ignores hidden files and directories. Including the `-h` flag will allow these files to be checked and deleted if duplicates are found.
   - `--dry-run`: A useful flag for finding duplicates but not deleting, or testing the command initially. This will _simulate_ a running of the tool, including the final report. However, no files will be deleted, and no softlinks created. Pair with `-f` to display file names.
 
