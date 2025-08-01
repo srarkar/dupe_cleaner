@@ -28,6 +28,7 @@ def is_hidden(path: Path):
     if os.name == "posix": # macOS/Linux
         return path.name.startswith(".")
     elif os.name == "nt":  # Windows
+        ### this is completely untested -- use at your own peril !!
         FILE_ATTRIBUTE_HIDDEN = 0x2
         GetFileAttributesW = ctypes.windll.kernel32.GetFileAttributesW
         GetFileAttributesW.argtypes = [ctypes.c_wchar_p]
