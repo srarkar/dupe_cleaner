@@ -9,7 +9,7 @@ Files are first sorted by file size then by hash, since two files cannot be dupl
 
 When duplicate files are found, they are deleted based on which was modified the least recently. Thus, in a group of duplicate files, the one file survivor will be the one modified most recently. 
 
-Note that when a file is deleted, a `symbolic link`, also known as a `softlink` or `symlink` is created between the deleted file and the survivor. 
+Note that when a file is deleted, a `symbolic link`, also known as a `softlink` or `symlink`, is created between the deleted file and the survivor. 
 If something referenced a file that was deleted by the tool, it will be redirected to the survivor automatically. 
 
 A report is printed to the console once the tool finishes running, which displays the number of files that were deleted, the amount of storage cleared (in bytes), number of duplicate file groups found, and how many softlinks failed to be created.
